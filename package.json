@@ -1,0 +1,21 @@
+{
+  "name": "ghosttrain-backbone",
+  "version": "0.1.0",
+  "description": "GhostTrain plugin for Backbone models",
+  "main": "index.js",
+  "repository": "git://github.com/jsantell/GhostTrain-Backbone",
+  "dependencies": {
+    "when": "*"
+  },
+  "devDependencies": {
+    "mocha": "1.16.2",
+    "chai": "1.8.1",
+    "jquery": "2.1.0-beta3",
+    "browserify": "*",
+    "uglify-js": "2.4.8",
+    "backbone": "1.1.0",
+    "underscore": "1.5.2"
+  },
+  "author": "Jordan Santell",
+  "license": "MIT"
+}
