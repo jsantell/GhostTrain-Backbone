@@ -1,21 +1,35 @@
 {
   "name": "ghosttrain-backbone",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "GhostTrain plugin for Backbone models",
   "main": "index.js",
   "repository": "git://github.com/jsantell/GhostTrain-Backbone",
-  "dependencies": {
-    "when": "*"
-  },
   "devDependencies": {
     "mocha": "1.16.2",
-    "chai": "1.8.1",
+    "expect.js": "0.2.0",
     "jquery": "2.1.0-beta3",
-    "browserify": "*",
+    "browserify": "3.18.0",
     "uglify-js": "2.4.8",
     "backbone": "1.1.0",
-    "underscore": "1.5.2"
+    "underscore": "1.5.2",
+    "ghosttrain": "0.0.x"
   },
   "author": "Jordan Santell",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec --ui bdd"
+  },
+  "testling": {
+    "browsers": {
+      "ie": [8, 9, 10],
+      "firefox": [25, "nightly"],
+      "chrome": [30, "canary"],
+      "opera": [12, "next"],
+      "safari": [5.1, 6]
+    },
+    "harness": "mocha",
+    "files": [
+      "test/test.*.js"
+    ]
+  }
 }

@@ -42,12 +42,12 @@ module.exports = function (gt, $) {
       body: JSON.parse(params.data || '{}')
     };
 
-    gt.send(type, url, reqOptions, function (err, res, body) {
-      if (err) {
+    gt.request(type, url, reqOptions, function (err, res, body) {
+      if (err || res.statusCode !== 200) {
         if (deferred)
-          deferred.rejectWith(model, [err]);
+          deferred.rejectWith(model, [err || body]);
         if (options.error)
-          options.error.call(model, err);
+          options.error.call(model, err || body);
       } else {
         if (deferred)
           deferred.resolveWith(model, [body]);

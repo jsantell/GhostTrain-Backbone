@@ -1,6 +1,10 @@
-# GhostTrainBacone
+# GhostTrain-Backbone
 
-GhostTrain plugin to mock routes for Backbone models.
+[![browser support](https://ci.testling.com/jsantell/GhostTrain-Backbone.png)](https://ci.testling.com/jsantell/GhostTrain-Backbone)
+
+[![Build Status](https://travis-ci.org/jsantell/GhostTrain-Backbone.png)](https://travis-ci.org/jsantell/GhostTrain-Backbone)
+
+[GhostTrain](http://ghosttrainjs.com) plugin to mock routes for [Backbone](http://backbonejs.com) models.
 
 ## Usage
 
@@ -29,7 +33,7 @@ In action:
 ```javascript
 var user = new User({ id: 1 });
 user.fetch({
-  success: function () {
+  success: function (model, res) {
     user.get('name'); // 'Ozzie Isaacs'
     user.get('skills'); // ['Planet Riding']
   });

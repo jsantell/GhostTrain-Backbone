@@ -1,3 +1,5 @@
+var GhostTrainBackbone = require('../..');
+
 function createModels (gt, $) {
   var User = Backbone.Model.extend({
     urlRoot: '/users',
@@ -21,3 +23,4 @@ function createModels (gt, $) {
     LongURLUser: LongURLUser
   };
 }
+exports.createModels = createModels;
