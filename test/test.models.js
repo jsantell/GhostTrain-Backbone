@@ -153,7 +153,7 @@ describe('Backbone Model', function () {
         id: 12345
       });
 
-      gt.delete('/users/:id', function (req, res) {
+      gt['delete']('/users/:id', function (req, res) {
         res.send(200);
       });
 
@@ -170,12 +170,13 @@ describe('Backbone Model', function () {
   });
 });
 
-/**
- * Only run in browsers because jQuery requires it to test for deferreds
- */
-
 describe('Use $.Deferred if exists', function () {
-  if (typeof document === 'object') {
+  if (typeof document !== 'object') {
+    it('Cannot use jQuery in this environment', function (done) {
+      expect(true).to.be.ok();
+      done();
+    });
+  } else {
     it('resolves promise with context and body on success', function (done) {
       var gt = new GhostTrain();
       var User = createModels(gt, $).User;
@@ -196,6 +197,8 @@ describe('Use $.Deferred if exists', function () {
     });
 
     it('rejects promise with context and error on failure', function (done) {
+      // Only run in browsers where $ works
+      if (typeof document !== 'object') return done();
       var gt = new GhostTrain();
       var User = createModels(gt, $).User;
       var user = new User({
