@@ -1,5 +1,5 @@
-!function(e){if("object"==typeof exports)module.exports=e();else if("function"==typeof define&&define.amd)define(e);else{var n;"undefined"!=typeof window?n=window:"undefined"!=typeof global?n=global:"undefined"!=typeof self&&(n=self),n.GhostTrainBackbone=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var utils = require('./lib/utils');
+!function(e){if("object"==typeof exports)module.exports=e();else if("function"==typeof define&&define.amd)define(e);else{var n;"undefined"!=typeof window?n=window:"undefined"!=typeof global?n=global:"undefined"!=typeof self&&(n=self),n.GhostTrainBackbone=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
+var utils = _dereq_('./lib/utils');
 
 /**
  * GhostTrainBackbone returns a function that can be used in place of `Backbone.sync`,
@@ -15,7 +15,8 @@ var utils = require('./lib/utils');
  */
 
 module.exports = function (gt, $) {
-  return function sync (method, model, options) {
+  return { sync: sync };
+  function sync (method, model, options) {
     // If Backbone's jQuery object passed in, use it to return a jQuery deferred
     var deferred = $ ? $.Deferred() : null;
     var type = utils.methodMap[method];
@@ -57,11 +58,11 @@ module.exports = function (gt, $) {
     });
 
     return deferred; 
-  };
+  }
 };
 
 
-},{"./lib/utils":2}],2:[function(require,module,exports){
+},{"./lib/utils":2}],2:[function(_dereq_,module,exports){
 // Map from CRUD to HTTP for our default `Backbone.sync` implementation.
 // From Backbone
 var methodMap = {

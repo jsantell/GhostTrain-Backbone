@@ -22,9 +22,8 @@ gt.get('/users/:id', function (req, res) {
   res.send(200, users[req.parms.id]);
 });
 
-var User = Backbone.Model.extend({
-  urlRoot: '/users',
-  sync: GhostTrainBackbone(gt)
+var User = Backbone.Model.extend(GhostTrainBackbone(gt)).extend({
+  urlRoot: '/users'
 });
 ```
 
@@ -44,7 +43,8 @@ user.fetch({
 
 ### GhostTrainBackbone(gt, [$])
 
-Takes a `GhostTrain` instance and an optional reference to the jQuery root. Returns a
-function to be used in place of `Backbone.sync` for Backbone models and collections. If `$`
-is provided, Backbone methods that returned the `JQXHR` object returned from the `$.ajax` call
-will now return a `$.Deferred` object.
+Takes a `GhostTrain` instance and an optional reference to the jQuery root. Returns an object
+containing only a `sync` property containing a function that mocks `Backbone.sync` for 
+Backbone models and collections. Use the return object to mixin your models and collections.
+If `$` is provided, Backbone methods that returned the `JQXHR` object returned from the `$.ajax`
+call will now return a `$.Deferred` object.

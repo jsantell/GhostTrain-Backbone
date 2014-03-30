@@ -14,7 +14,8 @@ var utils = require('./lib/utils');
  */
 
 module.exports = function (gt, $) {
-  return function sync (method, model, options) {
+  return { sync: sync };
+  function sync (method, model, options) {
     // If Backbone's jQuery object passed in, use it to return a jQuery deferred
     var deferred = $ ? $.Deferred() : null;
     var type = utils.methodMap[method];
@@ -56,6 +57,6 @@ module.exports = function (gt, $) {
     });
 
     return deferred; 
-  };
+  }
 };
 

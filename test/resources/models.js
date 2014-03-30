@@ -1,20 +1,17 @@
 var GhostTrainBackbone = require('../..');
 
 function createModels (gt, $) {
-  var User = Backbone.Model.extend({
-    urlRoot: '/users',
-    sync: GhostTrainBackbone(gt, $)
+  var User = Backbone.Model.extend(GhostTrainBackbone(gt, $)).extend({
+    urlRoot: '/users'
   });
 
-  var Users = Backbone.Collection.extend({
+  var Users = Backbone.Collection.extend(GhostTrainBackbone(gt, $)).extend({
     url: '/users',
-    sync: GhostTrainBackbone(gt, $),
     model: User
   });
 
-  var LongURLUser = Backbone.Model.extend({
-    urlRoot: '/users/long/user/',
-    sync: GhostTrainBackbone(gt, $)
+  var LongURLUser = Backbone.Model.extend(GhostTrainBackbone(gt, $)).extend({
+    urlRoot: '/users/long/user/'
   });
 
   return {
